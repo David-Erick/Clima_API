@@ -36,7 +36,7 @@ body{
         font-size: 16px;
         width: 100%;
         
-        &:focus{
+        &focus-visible{
             outline: none;
         }
     }
@@ -52,6 +52,10 @@ body{
     display: none;
     margin-top: 20px;
 
+    &.show{
+        display: block;
+    }
+
     #title{
         text-align: center;
         margin-bottom: 5px;
@@ -59,7 +63,32 @@ body{
         color: #372f3f;
     }
 
-    .show{
-        display: block;
+    
+}
+
+
+#temp{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    background: linear-gradient(90deg, #5a7cdc, #606dde);
+    color: #fafafa;
+    border-radius: 20px;
+    padding: 20px;
+    
+    img{
+        filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
     }
+}
+
+#temp_value{
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 55px;
+}
+
+#temp_description{
+    font-weight: 500;
+    text-transform: capitalize;
 }
