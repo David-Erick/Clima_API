@@ -4,10 +4,12 @@ document.querySelector('#search').addEventListener('submit', async (event) =>{
     const cityName = document.querySelector('#city_name').value;
 
     if (!cityName){
-        return showAlert('Digite o nome da cidade');
+        document.querySelector("#weather").classList.remove("show");
+        showAlert('Digite o nome da cidade');
+        return;
     }
 
-    const apiKey = ""
+    const apiKey = "2923cf3ce6d7ac2acc4d8b8bf8c386ab"
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(cityName)}&appid=${apiKey}&units=metric&lang=pt_br`;
 
     const results = await fetch(apiUrl);
@@ -25,9 +27,14 @@ document.querySelector('#search').addEventListener('submit', async (event) =>{
             windspeed: json.wind.speed,
             humidity: json.main.humidity,
         });  
-        console.log("ok");
     } else{
-        showAlert("Cidade não localizada");
+        document.querySelector("#weather").classList.remove("show");
+        showAlert(`
+            Cidade não localizada...
+            
+            <img src="src/images/404.svg"/>
+
+        `);
     }
 
 });
